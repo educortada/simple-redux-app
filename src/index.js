@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import AppContainer from './containers/AppContainer'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//  Step 1 - Add these imports
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import {sayHello} from './reducers/reducer'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// Step 2 - Create the store
+const store = createStore(sayHello);
+
+// Step 3 - Wrap existing app in Provider
+ReactDOM.render(
+  <Provider store={store}>
+    <AppContainer />
+  </Provider>,
+  document.getElementById('root')
+);
