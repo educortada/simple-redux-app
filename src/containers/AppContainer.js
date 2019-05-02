@@ -19,6 +19,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
+// Connects a React component (in this case App) to a Redux store.
+// It provides its connected component with the pieces of the data it needs from the store,
+// and the functions it can use to dispatch actions to the store.
 const AppContainer = connect(
   mapStateToProps,
   mapDispatchToProps
